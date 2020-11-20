@@ -17,8 +17,12 @@
 get_header();
 ?>
 
-<main id="site-content" role="main">
-
+<div id="site-content" class="container">
+	<div class="row">
+		<div class="col-md-4 order-md-2 mb-4">
+			<?php get_sidebar('sidebar'); ?>
+		</div>
+		<div class="col-md-8 order-md-1">
 		<?php
 			if( have_posts() ){
 				// перебираем все имеющиеся посты и выводим их
@@ -46,10 +50,9 @@ get_header();
 			else {
 				echo "<h2>Записей нет.</h2>";
 			} ?>
-
-</main><!-- #site-content -->
-
-<?php get_sidebar('sidebar'); ?>
+	</div>
+	</div>
+</div><!-- #site-content -->
 
 <?php
 get_footer();

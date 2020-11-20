@@ -30,9 +30,9 @@
 			array_merge(
 				$shared_args,
 				array(
-					'name'        => __( 'Sidebar', 'twentytwenty' ),
+					'name'        => __( 'Sidebar', 'travel' ),
 					'id'          => 'sidebar-1',
-					'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'twentytwenty' ),
+					'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'travel' ),
 				)
 			)
 		);
