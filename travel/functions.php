@@ -49,10 +49,49 @@
 		wp_enqueue_style( 'style', get_template_directory_uri(). '/style.css' );
 		wp_enqueue_script( 'script-name', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array(), '1.0.0', true );
 	}
+
+
+	add_action( 'init', 'register_travel_post_type' );
+
+	function register_travel_post_type() {
+
+		$labels = array(
+			'name' => _x( 'Travel', 'post type general name' ),
+			'singular_name' => _x( 'Travel', 'post type singular name' ),
+		);
+		$args = array(
+			'labels' => $labels,
+			'description' => 'My custom post type',
+			'public' => true,
+		);
+		register_post_type( 'travel', $args );
+	}
 	
-//	function mythem_enqueue_style() {
-//		wp_enqueue_style( 'style', get_template_directory_uri(). '/style.css' );
-//		wp_enqueue_style( 'tw_style', get_template_directory_uri(). '/tw_style.css' );
-//		wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
-//	}
-//	add_action( 'wp_enqueue_scripts', 'mythem_enqueue_style' );
+	
+	add_shortcode('gallery_travel', 'gallery_travel_shortcode');
+	function gallery_travel_shortcode($atts)
+	{
+		$atts = shortcode_atts([
+			'orderby'     => 'date',
+			'order'       => 'DESC',
+			'numberposts' => 10
+		], $atts);
+		
+		$posts = get_posts( array(
+			'orderby'     => $atts['orderby'],
+			'order'       => $atts['order'],
+			'numberposts' => $atts['numberposts'],
+			'post_type'   => 'travel'
+		) );
+		
+		$output = '<div class="regular slider">';
+		foreach ($posts as $post) {
+			setup_postdata($post);
+			$output .= '<div><a href="'.get_the_permalink($post->ID).'"> '.get_the_title($post->ID).' </a>'.get_the_content().'</div>';
+		};
+		$output .= '</div>';
+		
+		wp_reset_postdata();
+		
+		return $output;
+	}

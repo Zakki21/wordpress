@@ -16,7 +16,6 @@
 
 get_header();
 ?>
-
 <div id="site-content" class="container">
 	<div class="row">
 		<div class="col-md-4 order-md-2 mb-4">

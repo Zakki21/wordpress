@@ -41,11 +41,6 @@
 							<?php
 								wp_nav_menu( array( 'container' => '' ) );
 							?>
-							<ul class="list-unstyled">
-								<li><a href="#" class="text-white">Follow on Twitter</a></li>
-								<li><a href="#" class="text-white">Like on Facebook</a></li>
-								<li><a href="#" class="text-white">Email me</a></li>
-							</ul>
 						</div>
 					</div>
 				</div>
